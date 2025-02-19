@@ -11,7 +11,7 @@ export const ADashBoard = () => {
   // const { currentUser } = useSelector((state) => state.user);
   const [tableData, setTableData] = useState({
     employees: [],
-    teachers: [],
+    sales: [],
   });
   const [loading, setLoading] = useState(false);
   // const getCurrentDate = () => {
@@ -28,7 +28,7 @@ export const ADashBoard = () => {
 
   };
 
-  const teacherMapping = {
+  const saleMapping = {
 
     grants: "Grants",
     consultancy_report: "Consultancy Reports",
@@ -46,7 +46,7 @@ export const ADashBoard = () => {
       // console.log("Tables response", response.data.data);
       // Update the state with fetched table data
       const employeeTablesData = response?.data?.data?.Employee_Tables || [];
-      const teacherTablesData = response?.data?.data?.Teacher_Tables || [];
+      const saleTablesData = response?.data?.data?.Sale_Tables || [];
 
       const formattedEmployeeData = employeeTablesData.map((table) => {
         const tableName = Object.keys(table)[0];
@@ -55,17 +55,17 @@ export const ADashBoard = () => {
         return { label: formattedLabel, value: count };
       });
 
-      const formattedTeacherData = teacherTablesData.map((table) => {
+      const formattedSaleData = saleTablesData.map((table) => {
         const tableName = Object.keys(table)[0];
         const count = table[tableName];
-        const formattedLabel = teacherMapping[tableName] || tableName;
+        const formattedLabel = saleMapping[tableName] || tableName;
         return { label: formattedLabel, value: count };
       });
-      // console.log("employee:", formattedTeacherData);
+      // console.log("employee:", formattedSaleData);
 
       setTableData({
         employees: formattedEmployeeData,
-        teachers: formattedTeacherData,
+        sales: formattedSaleData,
         // Add other roles as needed
       });
       setLoading(false);
@@ -85,13 +85,13 @@ export const ADashBoard = () => {
       {loading ? <Spinner /> :
         <>
           <div className="flex flex-col m-1">
-            {/* Teacher Records Section */}
+            {/* Sale Records Section */}
             <div className="mb-4 ">
               <Typography variant="h4" color="blue-gray" className="mb-2 mx-4">
-                Teacher Records
+                Sale Records
               </Typography>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
-                {tableData?.teachers?.map((table, index) => (
+                {tableData?.sales?.map((table, index) => (
                   <div
                     key={index}
                     className="w-full  px-4 py-1 transition duration-300 relative group"

@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useSelector } from "react-redux";
 
-export default function TeacherSidebar({ closeSidebar }) {
+export default function SaleSidebar({ closeSidebar }) {
   const { currentUser } = useSelector((state) => state.user);
   // console.log("usersss",currentUser);
 
@@ -59,7 +59,7 @@ export default function TeacherSidebar({ closeSidebar }) {
             View Uploads
           </ListItem>
         </Link>
-        {currentUser && currentUser.SpecialAccess_Teacher !== null && (
+        {currentUser && currentUser.SpecialAccess_Sale !== null && (
           <Link to={`/t/report`} onClick={closeSidebar}>
             <ListItem>
               <ListItemPrefix>

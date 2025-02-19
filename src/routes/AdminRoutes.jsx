@@ -3,7 +3,7 @@ import Calendar from "../pages/Admin/Calender";
 import Report from "../pages/Admin/Report";
 import Employees from "../pages/Admin/Employees";
 
-import Teachers from "../pages/Admin/Teachers";
+import Sales from "../pages/Admin/Sales";
 import ViewInfo from "../pages/Admin/ViewInfo";
 import { ADashBoard } from "./../pages/Admin/ADashboard";
 
@@ -17,8 +17,8 @@ export const AdminRoutes = {
       element: <ADashBoard />,
     },
     {
-      path: "teachers",
-      element: <Teachers />,
+      path: "sales",
+      element: <Sales />,
     },
     {
       path: "employees",

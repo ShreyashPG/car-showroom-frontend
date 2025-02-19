@@ -21,7 +21,7 @@ export default function IndustrialVisit() {
   const [uploadedFilePaths, setUploadedFilePaths] = useState({});
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    T_ID: null,
+    S_ID: null,
     Name: currentUser?.Name,
     Username: currentUser?.Username,
     Department: "",

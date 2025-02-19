@@ -8,7 +8,7 @@ import {
   Grants,
   IndustrialVisits,
  
-} from "../../components/TModule";
+} from "../../components/SModule";
 
 import { useLocation, useNavigate } from "react-router-dom";
 

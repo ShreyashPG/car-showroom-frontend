@@ -23,7 +23,7 @@ export default function Attended() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    T_ID: null,
+    S_ID: null,
     Name: currentUser?.Name,
     UserName: currentUser?.Username,
     Department: "",

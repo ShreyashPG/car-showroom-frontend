@@ -47,7 +47,7 @@ import {
 import { resetUser } from "../redux/user/userSlice";
 import { BASE_URL } from "../api";
 import EmployeeSidebar from "./EModule/EmployeeSidebar";
-import TeacherSidebar from './TModule/TeacherSidebar';
+import SaleSidebar from './SModule/SaleSidebar';
 import AdminSidebar from "./AModule/AdminSidebar";
 
 const profileMenuItems = [
@@ -214,11 +214,11 @@ export default function NavList() {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-  let teachers = [];
+  let sales = [];
 
   // const [tableData, setTableData] = useState({
   //   employees: [],
-  //   teachers: [],
+  //   sales: [],
   // });
   const getCurrentDate = () => {
     const currentDate = new Date();
@@ -235,14 +235,14 @@ export default function NavList() {
 
   // console.log("notification sender data", notificationData)
 
-  const fetchAllTeachers = async () => {
+  const fetchAllSales = async () => {
     try {
-      const apiUrl = `${BASE_URL}/auth/getAllTeacher`;
+      const apiUrl = `${BASE_URL}/auth/getAllSale`;
       const response = await axios.get(apiUrl);
       console.log(response?.data?.data);
-      teachers = response?.data?.data;
+      sales = response?.data?.data;
 
-      const usernamesArray = teachers.map((item) => ({
+      const usernamesArray = sales.map((item) => ({
         value: item.Username,
         label: item.Username,
       }));
@@ -282,7 +282,7 @@ export default function NavList() {
 
   const handleOpenSendModal = () => {
     setSendModalOpen(true);
-    fetchAllTeachers();
+    fetchAllSales();
     // Close the notification modal when opening the send modal
     handleCloseNotificationModal();
   };
@@ -622,7 +622,7 @@ export default function NavList() {
           </div>
           <div className="p-3 h-full ">
             {/* Render appropriate sidebar based on user type */}
-            {currentUser?.Role === 1 && <TeacherSidebar closeSidebar={closeSidebar} />}
+            {currentUser?.Role === 1 && <SaleSidebar closeSidebar={closeSidebar} />}
             {currentUser?.Role === 2 && <EmployeeSidebar closeSidebar={closeSidebar} />}
             {currentUser?.Role === 0 && <AdminSidebar closeSidebar={closeSidebar} />}
           </div>

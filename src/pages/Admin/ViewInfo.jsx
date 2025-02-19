@@ -8,10 +8,10 @@ import { BASE_URL } from "../../api";
 const ViewInfo = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const teacherId = searchParams.get("teacherId");
+  const saleId = searchParams.get("saleId");
   const employeeId = searchParams.get("EmployeeId");
   console.log(employeeId);
-  console.log(teacherId);
+  console.log(saleId);
 
   const [showModal, setShowModal] = useState(false);
   const [selectedTables, setSelectedTables] = useState({});
@@ -20,7 +20,7 @@ const ViewInfo = () => {
   const [selectedTable, setSelectedTable] = useState(null);
   // const [selectAll, setSelectAll] = useState(false);
 
-  const teacherTables = {
+  const saleTables = {
    
     industrial_fields_tour: "industrial_fields_tour",
    
@@ -71,7 +71,7 @@ const ViewInfo = () => {
   const applyChanges = async () => {
     console.log("Applying Changes:", selectedTables);
 
-    const userId = userType === "teacher" ? teacherId : employeeId;
+    const userId = userType === "sale" ? saleId : employeeId;
 
     try {
       const apiUrl = `${BASE_URL}/general/get-user-data?username=${userId}&selectedTables[]=${Object.keys(
@@ -79,7 +79,7 @@ const ViewInfo = () => {
       ).join("&selectedTables[]=")}`;
       const response = await axios.post(apiUrl, {
         selectedTables,
-        teacherId,
+        saleId,
         employeeId,
       });
 
@@ -186,11 +186,11 @@ const ViewInfo = () => {
     // If all tables are currently selected, deselect all; otherwise, select all
     setSelectedTables(
       Object.keys(selectedTables).length ===
-        Object.keys(userType === "teacher" ? teacherTables : employeeTables)
+        Object.keys(userType === "sale" ? saleTables : employeeTables)
           .length
         ? {}
-        : userType === "teacher"
-          ? teacherTables
+        : userType === "sale"
+          ? saleTables
           : employeeTables
     );
   };
@@ -198,7 +198,7 @@ const ViewInfo = () => {
   return (
     <div>
       <div className="flex justify-center w-full gap-2">
-        {teacherId === null ? (
+        {saleId === null ? (
           <>
             <button
               className=" text-white px-4 py-2 mt-4 rounded-md focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
@@ -212,10 +212,10 @@ const ViewInfo = () => {
           <>
             <button
               className=" text-white px-4 py-2 mt-4 rounded-md focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
-              onClick={() => openModal("teacher")}
+              onClick={() => openModal("sale")}
               style={{ backgroundColor: "#1565C0" }}
             >
-              Open Teacher Table Selection
+              Open Sale Table Selection
             </button>
           </>
         )}
@@ -234,7 +234,7 @@ const ViewInfo = () => {
                 checked={
                   Object.keys(selectedTables).length ===
                   Object.keys(
-                    userType === "teacher" ? teacherTables : employeeTables
+                    userType === "sale" ? saleTables : employeeTables
                   ).length
                 }
               />
@@ -246,8 +246,8 @@ const ViewInfo = () => {
               </label>
             </div>
             <div style={{ maxHeight: "300px", overflowY: "auto" }}>
-              {userType === "teacher"
-                ? Object.keys(teacherTables).map((tableName) => (
+              {userType === "sale"
+                ? Object.keys(saleTables).map((tableName) => (
                   <div key={tableName} className="mb-2 flex items-center">
                     <input
                       type="checkbox"
@@ -261,7 +261,7 @@ const ViewInfo = () => {
                       htmlFor={`checkbox-${tableName}`}
                       className="block mb-2 cursor-pointer"
                     >
-                      {teacherTables[tableName]}
+                      {saleTables[tableName]}
                     </label>
                   </div>
                 ))

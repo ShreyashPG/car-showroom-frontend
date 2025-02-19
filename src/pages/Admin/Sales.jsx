@@ -24,19 +24,19 @@ import { removeSpecificColumns } from "./AdminApis";
 import { BASE_URL } from "../../api";
 
 const SimpleModal = ({
-  teacherUsername,
-  teacherAccess,
+  saleUsername,
+  saleAccess,
   onRemoveAccess,
   onClose,
-  specialAccessTeacherTables,
+  specialAccessSaleTables,
   specialAccessEmployeeTables,
 }) => {
   const handleRemoveAccess = () => {
-    onRemoveAccess(teacherUsername);
+    onRemoveAccess(saleUsername);
   };
 
-  const teacherTableOptions =
-    specialAccessTeacherTables?.map((option) => ({
+  const saleTableOptions =
+    specialAccessSaleTables?.map((option) => ({
       value: option,
       label: option,
     })) || [];
@@ -51,16 +51,16 @@ const SimpleModal = ({
     <div className="simple-modal m-2 shadow-md border-2 p-3 ">
       <div className="modal-content">
         <Typography color="blue" className="text-xl font-bold">
-          Remove Access for {teacherUsername}
+          Remove Access for {saleUsername}
         </Typography>
 
         <div className="mt-4">
-          <label className="block text-gray-700">Teacher Tables:</label>
+          <label className="block text-gray-700">Sale Tables:</label>
           <Select
-            options={teacherTableOptions}
+            options={saleTableOptions}
             isMulti
             value={
-              teacherAccess?.teacherTables?.map((option) => ({
+              saleAccess?.saleTables?.map((option) => ({
                 value: option,
                 label: option,
               })) || []
@@ -75,7 +75,7 @@ const SimpleModal = ({
             options={employeeTableOptions}
             isMulti
             value={
-              teacherAccess?.employeeTables?.map((option) => ({
+              saleAccess?.employeeTables?.map((option) => ({
                 value: option,
                 label: option,
               })) || []
@@ -97,21 +97,21 @@ const SimpleModal = ({
   );
 };
 
-export default function Teachers() {
+export default function Sales() {
   const navigate = useNavigate();
-  const [teachers, setTeachers] = useState([]);
+  const [sales, setSales] = useState([]);
   const [editingEmail, setEditingEmail] = useState(null);
-  const [selectedTeacherAccess, setSelectedTeacherAccess] = useState([]);
+  const [selectedSaleAccess, setSelectedSaleAccess] = useState([]);
   const [selectedEmployeeAccess, setSelectedEmployeeAccess] = useState([]);
-  const [teacherTableAccess, setTeacherTableAccess] = useState([]);
+  const [saleTableAccess, setSaleTableAccess] = useState([]);
   const [employeeTableAccess, setEmployeeTableAccess] = useState([]);
-  const [teacherId, setTeacherId] = useState("");
-  const [removingAccessTeacher, setRemovingAccessTeacher] = useState(null);
+  const [saleId, setSaleId] = useState("");
+  const [removingAccessSale, setRemovingAccessSale] = useState(null);
   const [removingAccess, setRemovingAccess] = useState({
-    teacherTables: [],
+    saleTables: [],
     employeeTables: [],
   });
-  const [specialAccessTeacherTables, setSpecialAccessTeacherTables] = useState(
+  const [specialAccessSaleTables, setSpecialAccessSaleTables] = useState(
     []
   );
   const [specialAccessEmployeeTables, setSpecialAccessEmployeeTables] = useState(
@@ -119,30 +119,30 @@ export default function Teachers() {
   );
 
   const handleButtonClick = () => {
-    teacherId === ""
-      ? alert("Enter TeacherID...")
-      : navigate(`/a/viewInfo?teacherId=${teacherId}`);
+    saleId === ""
+      ? alert("Enter SaleID...")
+      : navigate(`/a/viewInfo?saleId=${saleId}`);
   };
 
-  const getAllTeachers = async () => {
+  const getAllSales = async () => {
     try {
-      const apiurl = `${BASE_URL}/auth/getAllTeacher`;
+      const apiurl = `${BASE_URL}/auth/getAllSale`;
       const response = await axios.get(apiurl, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      setTeachers(response.data.data);
+      setSales(response.data.data);
     } catch (error) {
-      console.error("Error fetching teachers:", error);
+      console.error("Error fetching sales:", error);
     }
   };
 
   const getAllTables = async () => {
     try {
       const tablesUrl =
-        `${BASE_URL}/teacher/gettables/tables-stud-fact`;
+        `${BASE_URL}/sale/gettables/tables-stud-fact`;
       const response = await axios.get(tablesUrl, {
         headers: {
           "Content-Type": "application/json",
@@ -151,14 +151,14 @@ export default function Teachers() {
 
       console.log("Response:", response);
 
-      const { Teacher_Tables, Employee_Tables } = response.data.data;
+      const { Sale_Tables, Employee_Tables } = response.data.data;
 
-      // Set the regular teacher and employee table access arrays
-      setTeacherTableAccess(Teacher_Tables || []);
+      // Set the regular sale and employee table access arrays
+      setSaleTableAccess(Sale_Tables || []);
       setEmployeeTableAccess(Employee_Tables || []);
 
-      // Set the special access teacher and employee table arrays
-      setSpecialAccessTeacherTables(Teacher_Tables || []);
+      // Set the special access sale and employee table arrays
+      setSpecialAccessSaleTables(Sale_Tables || []);
       setSpecialAccessEmployeeTables(Employee_Tables || []);
     } catch (error) {
       console.error("Error fetching tables:", error);
@@ -166,16 +166,16 @@ export default function Teachers() {
   };
 
   useEffect(() => {
-    getAllTeachers();
+    getAllSales();
     getAllTables();
   }, []);
 
   const handleEditClick = (Username) => {
-    const teacher = teachers.find((teacher) => teacher.Username === Username);
+    const sale = sales.find((sale) => sale.Username === Username);
 
     // Set the initial selected values based on the data from the backend
-    setSelectedTeacherAccess(teacher.SpecialAccessTeacher || []);
-    setSelectedEmployeeAccess(teacher.SpecialAccessEmployee || []);
+    setSelectedSaleAccess(sale.SpecialAccessSale || []);
+    setSelectedEmployeeAccess(sale.SpecialAccessEmployee || []);
 
     setEditingEmail(Username);
   };
@@ -188,7 +188,7 @@ export default function Teachers() {
       // Modify the data to be sent to the backend
       const data = {
         username: Username,
-        teacherTables: selectedTeacherAccess,
+        saleTables: selectedSaleAccess,
         employeeTables: selectedemployeeAccess,
       };
 
@@ -212,34 +212,34 @@ export default function Teachers() {
       setEditingEmail(null);
 
       // Update the state with the modified value
-      setTeachers((prevTeachers) =>
-        prevTeachers.map((teacher) =>
-          teacher.Username === Username
+      setSales((prevSales) =>
+        prevSales.map((sale) =>
+          sale.Username === Username
             ? {
-                ...teacher,
-                SpecialAccessTeacher: selectedTeacherAccess,
+                ...sale,
+                SpecialAccessSale: selectedSaleAccess,
                 SpecialAccessEmployee: selectedEmployeeAccess,
               }
-            : teacher
+            : sale
         )
       );
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch (error) {
-      console.error("Error updating teacher:", error);
+      console.error("Error updating sale:", error);
     }
   };
 
   const handleSpecialAccessSelectChange = (value, type) => {
-    if (type === "teacher") {
-      setSelectedTeacherAccess(value.map((option) => option.value));
+    if (type === "sale") {
+      setSelectedSaleAccess(value.map((option) => option.value));
     } else if (type === "employee") {
       setSelectedEmployeeAccess(value.map((option) => option.value));
     }
   };
 
-  const getTeacherAccess = async (Username) => {
+  const getSaleAccess = async (Username) => {
     try {
       // Fetch the current special access for the user
       const accessUrl = `${BASE_URL}/general/get-spec-cols?username=${Username}`;
@@ -253,21 +253,21 @@ export default function Teachers() {
 
       // Set the special access tables in the removingAccess state
       setRemovingAccess({
-        teacherTables: accessResponse.data.data.SpecialAccess_Teacher || [],
+        saleTables: accessResponse.data.data.SpecialAccess_Sale || [],
         employeeTables: accessResponse.data.data.SpecialAccess_Employee || [],
       });
 
-      setRemovingAccessTeacher(Username);
+      setRemovingAccessSale(Username);
     } catch (error) {
-      console.error("Error fetching teacher access:", error);
+      console.error("Error fetching sale access:", error);
     }
   };
 
   const handleRemoveAccessClick = async (Username) => {
     try {
       console.log(
-        "Before removing access - Teacher Tables:",
-        removingAccess.teacherTables
+        "Before removing access - Sale Tables:",
+        removingAccess.saleTables
       );
       console.log(
         "Before removing access - Employee Tables:",
@@ -278,7 +278,7 @@ export default function Teachers() {
       // Modify the data to be sent to the backend
       const data = {
         username: Username,
-        teacherTables: removingAccess.teacherTables,
+        saleTables: removingAccess.saleTables,
         employeeTables: removingAccess.employeeTables,
       };
 
@@ -302,7 +302,7 @@ export default function Teachers() {
       });
 
       // Close the remove access modal
-      setRemovingAccessTeacher(null);
+      setRemovingAccessSale(null);
       setTimeout(() => {
         window.location.reload();
       }, 2000);
@@ -315,15 +315,15 @@ export default function Teachers() {
     <div className="container ">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between  mx-2">
         <div>
-          <Header category="Page" title="Teacher" />
+          <Header category="Page" title="Sale" />
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center p-0  gap-4">
           <Input
-            label="Enter Teacher ID"
+            label="Enter Sale ID"
             variant="outlined"
-            value={teacherId}
+            value={saleId}
             className="w-80 py-0"
-            onChange={(e) => setTeacherId(e.target.value)}
+            onChange={(e) => setSaleId(e.target.value)}
           />
           <Button
             variant="contained"
@@ -332,7 +332,7 @@ export default function Teachers() {
             onClick={handleButtonClick}
             endIcon={<SendIcon />}
           >
-            View Teacher Data
+            View Sale Data
           </Button>
         </div>
       </div>
@@ -379,31 +379,31 @@ export default function Teachers() {
             </tr>
           </thead>
           <tbody>
-            {teachers?.map((teacher) => (
-              <tr key={teacher.Username} className="hover:bg-light-blue-50">
-                <td className="py-2 px-4 border-b">{teacher.Name}</td>
-                <td className="py-2 px-4 border-b">{teacher.Username}</td>
+            {sales?.map((sale) => (
+              <tr key={sale.Username} className="hover:bg-light-blue-50">
+                <td className="py-2 px-4 border-b">{sale.Name}</td>
+                <td className="py-2 px-4 border-b">{sale.Username}</td>
                 <td
                   className={`py-2 px-4 border-b ${
-                    editingEmail === teacher.Username ? "editable" : ""
+                    editingEmail === sale.Username ? "editable" : ""
                   }`}
                 >
-                  {editingEmail === teacher.Username ? (
+                  {editingEmail === sale.Username ? (
                     <>
                       <div className="mb-2">
-                        <label>Special Access Teacher:</label>
+                        <label>Special Access Sale:</label>
                         <Select
                           isMulti
-                          options={specialAccessTeacherTables.map((option) => ({
+                          options={specialAccessSaleTables.map((option) => ({
                             value: option,
                             label: option,
                           }))}
-                          value={selectedTeacherAccess.map((option) => ({
+                          value={selectedSaleAccess.map((option) => ({
                             value: option,
                             label: option,
                           }))}
                           onChange={(value) =>
-                            handleSpecialAccessSelectChange(value, "teacher")
+                            handleSpecialAccessSelectChange(value, "sale")
                           }
                         />
                       </div>
@@ -428,22 +428,22 @@ export default function Teachers() {
                   ) : (
                     <>
                       <strong>Faculty:</strong>{" "}
-                      {teacher.SpecialAccess_Teacher
-                        ? teacher.SpecialAccess_Teacher
+                      {sale.SpecialAccess_Sale
+                        ? sale.SpecialAccess_Sale
                         : ""}
                       <br />
                       <strong>Employee:</strong>{" "}
-                      {teacher.SpecialAccess_Employee
-                        ? teacher.SpecialAccess_Employee
+                      {sale.SpecialAccess_Employee
+                        ? sale.SpecialAccess_Employee
                         : ""}
                     </>
                   )}
                 </td>
                 <td className="py-2 px-4 border-b flex items-center">
-                  {editingEmail === teacher.Username ? (
+                  {editingEmail === sale.Username ? (
                     <Tooltip content="Save Changes">
                       <IconButton
-                        onClick={() => handleSaveClick(teacher.Username)}
+                        onClick={() => handleSaveClick(sale.Username)}
                         variant="text"
                       >
                         <CheckCircleIcon className="h-4 w-4 text-green-500" />
@@ -453,7 +453,7 @@ export default function Teachers() {
                     <>
                       <Tooltip content="Edit Data">
                         <IconButton
-                          onClick={() => handleEditClick(teacher.Username)}
+                          onClick={() => handleEditClick(sale.Username)}
                           variant="text"
                         >
                           <PencilIcon className="h-4 w-4 text-blue-500" />
@@ -461,7 +461,7 @@ export default function Teachers() {
                       </Tooltip>
                       <Tooltip content="Remove Access">
                         <IconButton
-                          onClick={() => getTeacherAccess(teacher.Username)}
+                          onClick={() => getSaleAccess(sale.Username)}
                           variant="text"
                         >
                           <TrashIcon className="h-4 w-4 text-red-500" />
@@ -475,13 +475,13 @@ export default function Teachers() {
           </tbody>
         </table>
       </div>
-      {removingAccessTeacher && (
+      {removingAccessSale && (
         <SimpleModal
-          teacherUsername={removingAccessTeacher}
-          teacherAccess={removingAccess} // Pass removingAccess instead of teacherAccess
+          saleUsername={removingAccessSale}
+          saleAccess={removingAccess} // Pass removingAccess instead of saleAccess
           onRemoveAccess={handleRemoveAccessClick}
-          onClose={() => setRemovingAccessTeacher(null)}
-          specialAccessTeacherTables={specialAccessTeacherTables}
+          onClose={() => setRemovingAccessSale(null)}
+          specialAccessSaleTables={specialAccessSaleTables}
           specialAccessEmployeeTables={specialAccessEmployeeTables}
         />
       )}

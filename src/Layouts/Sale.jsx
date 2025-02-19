@@ -1,10 +1,10 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import NavList from "../components/NavList";
-import TeacherSidebar from "../components/TModule/TeacherSidebar";
+import SaleSidebar from "../components/SModule/SaleSidebar";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-export default function Teacher() {
+export default function Sale() {
 
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function Teacher() {
           <NavList />
           <div className="w-full flex font-poppins">
             <span className="hidden sm:block ">
-              <TeacherSidebar />
+              <SaleSidebar />
             </span>
             <div className="border-l-2 w-full mx-0 px-0 overflow-x-auto  ">
               <Outlet />

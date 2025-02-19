@@ -113,7 +113,7 @@ export default function TDashboard() {
 
   const [userCounts, setUserCounts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const teacherMapping = {
+  const saleMapping = {
    
     grants: "Grants",
     consultancy_report: "Consultancy Reports",
@@ -133,17 +133,17 @@ export default function TDashboard() {
         username: currentUser?.Username,
       });
       arr = response.data.data.Tables;
-      const formattedTeacherData = arr.map((table) => {
+      const formattedSaleData = arr.map((table) => {
         const tableName = Object.keys(table)[0];
         const count = table[tableName];
-        const formattedLabel = teacherMapping[tableName] || tableName;
+        const formattedLabel = saleMapping[tableName] || tableName;
         return { label: formattedLabel, value: count };
       });
 
       console.log("User counts:", arr);
-      setUserCounts(formattedTeacherData);
+      setUserCounts(formattedSaleData);
       setLoading(false);
-      // console.log("teacher: ", formattedTeacherData);
+      // console.log("sale: ", formattedSaleData);
       console.log(userCounts); // Assuming the API response is an array of user counts
     } catch (error) {
       setLoading(false);

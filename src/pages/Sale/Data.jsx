@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import TableData from "./../../components/TModule/Table Data/TableData";
+import TableData from "./../../components/SModule/Table Data/TableData";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Data() {

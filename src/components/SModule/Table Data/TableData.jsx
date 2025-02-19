@@ -93,17 +93,17 @@ export default function TableData({ tableName }) {
   const deleteAPIRoute = (tableName) => {
     const deleteRoutes = {
       
-      Grants: (username, T_ID) =>
-        `${deleteRecordsGrants}?username=${username}&T_ID=${T_ID}`,
+      Grants: (username, S_ID) =>
+        `${deleteRecordsGrants}?username=${username}&S_ID=${S_ID}`,
 
-      "Consultancy Report": (username, T_ID) =>
-        `${deleteRecordsConsultancy}?username=${username}&T_ID=${T_ID}`,
+      "Consultancy Report": (username, S_ID) =>
+        `${deleteRecordsConsultancy}?username=${username}&S_ID=${S_ID}`,
    
-      "STTP/FDP/Workshop/Conference Attended": (username, T_ID) =>
-        `${deleteRecordsAttended}?username=${username}&T_ID=${T_ID}`,
+      "STTP/FDP/Workshop/Conference Attended": (username, S_ID) =>
+        `${deleteRecordsAttended}?username=${username}&S_ID=${S_ID}`,
 
-      "Industrial Visits / Tours / Field Trip": (username, T_ID) =>
-        `${deleteRecordsIndustrial}?username=${username}&T_ID=${T_ID}`,
+      "Industrial Visits / Tours / Field Trip": (username, S_ID) =>
+        `${deleteRecordsIndustrial}?username=${username}&S_ID=${S_ID}`,
  
     };
 
@@ -114,16 +114,16 @@ export default function TableData({ tableName }) {
   const updateAPIRoute = (tableName) => {
     const updateRoutes = {
 
-      Grants: (username, T_ID) =>
-        `${updateRecordsGrants}?username=${username}&T_ID=${T_ID}`,
-      "Consultancy Report": (username, T_ID) =>
-        `${updateRecordsConsultancy}?username=${username}&T_ID=${T_ID}`,
+      Grants: (username, S_ID) =>
+        `${updateRecordsGrants}?username=${username}&S_ID=${S_ID}`,
+      "Consultancy Report": (username, S_ID) =>
+        `${updateRecordsConsultancy}?username=${username}&S_ID=${S_ID}`,
 
-      "STTP/FDP/Workshop/Conference Attended": (username, T_ID) =>
-        `${updateRecordsAttended}?username=${username}&T_ID=${T_ID}`,
+      "STTP/FDP/Workshop/Conference Attended": (username, S_ID) =>
+        `${updateRecordsAttended}?username=${username}&S_ID=${S_ID}`,
     
-      "Industrial Visits / Tours / Field Trip": (username, T_ID) =>
-        `${updateRecordsIndustrial}?username=${username}&T_ID=${T_ID}`,
+      "Industrial Visits / Tours / Field Trip": (username, S_ID) =>
+        `${updateRecordsIndustrial}?username=${username}&S_ID=${S_ID}`,
      
     };
 
@@ -135,7 +135,7 @@ export default function TableData({ tableName }) {
     const user = await currentUser.Username;
     try {
       const apiurl = getApiRoute(tableName)(user);
-      console.log("apiRoute in getAllRecords teacher:", apiurl);
+      console.log("apiRoute in getAllRecords sale:", apiurl);
       const response = await axios.get(apiurl, {
         headers: {
           "Content-Type": "application/json", // Make sure this header is defined
@@ -181,9 +181,9 @@ export default function TableData({ tableName }) {
     try {
       const apiurl = deleteAPIRoute(tableName)(
         currentUser.Username,
-        record.T_ID
+        record.S_ID
       );
-      // console.log("Deleting record with:", currentUser.Email, record.T_ID);
+      // console.log("Deleting record with:", currentUser.Email, record.S_ID);
       // console.log("Table:", tableName);
 
       const response = await axios.delete(apiurl, {
@@ -192,7 +192,7 @@ export default function TableData({ tableName }) {
         },
         data: {
           username: currentUser.Username,
-          T_ID: record.T_ID,
+          S_ID: record.S_ID,
         },
       });
       console.log("Delete", response);
@@ -210,7 +210,7 @@ export default function TableData({ tableName }) {
       }
 
 
-      const updatedRows = tableRows.filter((r) => r.T_ID !== record.T_ID);
+      const updatedRows = tableRows.filter((r) => r.S_ID !== record.S_ID);
       setTableRows(updatedRows);
     } catch (error) {
       toast.error("Failed to delete Record!", {
@@ -232,7 +232,7 @@ export default function TableData({ tableName }) {
   const handleEdit = (record) => {
     setEditableFields({
       ...editableFields,
-      [record.T_ID]: { ...record },
+      [record.S_ID]: { ...record },
     });
   };
 
@@ -250,7 +250,7 @@ export default function TableData({ tableName }) {
   // Update modified changes
   const handleSave = async (tId) => {
     try {
-      const T_ID = tId;
+      const S_ID = tId;
       const userName = currentUser?.Username;
       
 
@@ -267,13 +267,13 @@ export default function TableData({ tableName }) {
       //   },
       //   data: {
       //     username: currentUser.Username,
-      //     T_ID: tId,
+      //     S_ID: tId,
       //   },
       // });
 
       // Update tableRows state
       // const updatedRows = tableRows.map((r) =>
-      //   r.T_ID === tId ? { ...r, ...updatedRecord } : r
+      //   r.S_ID === tId ? { ...r, ...updatedRecord } : r
       // );
       // setTableRows(updatedRows);
 
@@ -412,13 +412,13 @@ export default function TableData({ tableName }) {
                                 : "border-solid border-blue-gray-200"
                               }`}
                           >
-                            {editableFields[record.T_ID] &&
-                              editableFields[record.T_ID][head] !== undefined ? (
+                            {editableFields[record.S_ID] &&
+                              editableFields[record.S_ID][head] !== undefined ? (
                               <Input
-                                value={editableFields[record.T_ID][head]}
+                                value={editableFields[record.S_ID][head]}
                                 label={[head]}
                                 onChange={(e) =>
-                                  handleEditField(record.T_ID, head, e.target.value)
+                                  handleEditField(record.S_ID, head, e.target.value)
                                 }
                               />
                             ) : head.startsWith("Upload") ? (
@@ -454,10 +454,10 @@ export default function TableData({ tableName }) {
                           </td>
                         ))}
                         <td className="p-4 border-r border-solid border-blue-gray-200">
-                          {editableFields[record.T_ID] ? (
+                          {editableFields[record.S_ID] ? (
                             <Tooltip content="Save Changes">
                               <IconButton
-                                onClick={() => handleSave(record.T_ID)}
+                                onClick={() => handleSave(record.S_ID)}
                                 variant="text"
                               >
                                 <CheckCircleIcon className="h-4 w-4 text-green-500" />

@@ -3,7 +3,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { EmployeeRoutes } from "./routes/EmployeeRoutes";
-import { TeacherRoutes } from "./routes/TeacherRoutes";
+import { SaleRoutes } from "./routes/SaleRoutes";
 import { AdminRoutes } from "./routes/AdminRoutes";
 import EDashboard from "./pages/Employee/EDashboard";
 import { HomePage } from "./pages/HomePage";
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
 
   // protected routes
   EmployeeRoutes,
-  TeacherRoutes,
+  SaleRoutes,
   AdminRoutes,
   AuthRoutes,
 ]);

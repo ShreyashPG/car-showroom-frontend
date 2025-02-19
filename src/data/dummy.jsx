@@ -19,7 +19,7 @@ export const links = [
   {
     links: [
       {
-        name: "teachers",
+        name: "sales",
         icon: <UserCircleIcon className="h-5 w-5" />,
       },
       {

@@ -28,7 +28,7 @@ import {
   getAllRecordsGrants,
   getAllRecordsIndustrial,
   
-} from "../../components/TModule/API_Routes";
+} from "../../components/SModule/API_Routes";
 import { DocumentIcon } from "@heroicons/react/24/solid";
 import {
   getAllRecordsInternship,
@@ -164,7 +164,7 @@ const Report = () => {
   //   "faculty_conference_publication": "Faculty Conference Publication",
   //   "grants": "Grants",
   //   "industrial_fields_tour": "Industrial Fields Tour",
-  //   // "metadata_teacher": "metadata_teacher",
+  //   // "metadata_sale": "metadata_sale",
   //   "mous": "MOUs",
   //   // "notices": "Notices",
   //   "patent_publication": "Patent Publication",
@@ -183,7 +183,7 @@ const Report = () => {
   //   "student_research_publication": "Student Research Publication",
   //   "student_sports_data": "Student Sports Data",
   //   "student_technical_events": "Student Technical Events",
-  //   // "teacher_login": "teacher_login",
+  //   // "sale_login": "sale_login",
   //   "technical_competition_fest": "Technical Competition Fest",
   //   // "uploads": "uploads",
   //   "webinar_guest_lectures": "Webinar Guest Lectures"
@@ -202,7 +202,7 @@ const Report = () => {
 
       const combinedArray = [
         ...response.data.data.SpecialAccess_Employee,
-        ...response.data.data.SpecialAccess_Teacher,
+        ...response.data.data.SpecialAccess_Sale,
       ];
 
       console.log("combined array is : ", combinedArray);
@@ -278,7 +278,7 @@ const Report = () => {
     // console.log(selectedTable);
     const tablePrefix = selectedTable.startsWith("employee")
       ? "employee"
-      : "teacher";
+      : "sale";
 
     setApiUrl(
       `${BASE_URL}/${tablePrefix}/${tableMapping[selectedTable]}/filter?${queryParameters}`
