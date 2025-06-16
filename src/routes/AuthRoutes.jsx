@@ -1,7 +1,7 @@
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ResetPass from "../pages/Auth/ResetPass";
-import ForgotPass from "../pages/Auth/forgotPass";
+import ForgotPass from "../pages/Auth/ForgotPass";
 import Auth from "./../Layouts/Auth";
 
 export const AuthRoutes = {
