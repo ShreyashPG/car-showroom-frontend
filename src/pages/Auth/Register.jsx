@@ -246,7 +246,7 @@ export default function Register() {
               size="lg"
               name="gmail"
               value={formData.gmail}
-              label="College Email"
+              label="Showroom Email"
               className="border-t-blue-gray-200 focus-border-t-gray-900"
               // onChange={(e) => setGmail(e.target.value)}
               onChange={handleInputChange}
