@@ -309,10 +309,12 @@ export default function TableData({ tableName }) {
   //link to uploaded document
   const handleLink = (link) => {
     console.log("Link of document is : ", link);
-    const IP = "http://10.10.15.150";
-    const PORT = 8081;
+    const IP = "https://car-showroom-backend-ujvg.onrender.com";
+    // const PORT = 8081;
     const pathParts = link.split('\\Uploads');
-    const newPath = `${IP}:${PORT}/Uploads${pathParts[1]}`;
+    // const newPath = `${IP}:${PORT}/Uploads${pathParts[1]}`;
+    const newPath = `${IP}/Uploads${pathParts[1]}`;
+
 
     console.log("New URL is : ", newPath);
 
