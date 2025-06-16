@@ -22,13 +22,13 @@ const ViewInfo = () => {
 
   const saleTables = {
    
-    industrial_fields_tour: "industrial_fields_tour",
+    lead_conversions: "lead_conversions",
    
-    grants: "grants",
+    monthlySales: "monthlySales",
 
-    consultancy_report: "consultancy_report",
+    stock_report: "stock_report",
    
-    sttp_fdp_conference_attended: "sttp_fdp_conference_attended",
+    profit_loss_report: "profit_loss_report",
 
   };
 

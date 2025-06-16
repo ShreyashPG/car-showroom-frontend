@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import {
-  Attended,
+  ProfitLoss,
 
-  ConsultancyReport,
+  StockReport,
  
-  Grants,
-  IndustrialVisits,
+  MonthlySales,
+  LeadConversions,
  
 } from "../../components/SModule";
 
@@ -26,30 +26,30 @@ export default function General() {
 
   const options = [
    
-    { value: "Grants", label: "Grants" },
-    { value: "Consultancy Report", label: "Consultancy Report" },
+    { value: "MonthlySales", label: "MonthlySales" },
+    { value: "Stock Report", label: "Stock Report" },
     
     {
-      value: "STTP/FDP/Workshop/Conference Attended",
-      label: "STTP/FDP/Workshop/Conference Attended",
+      value: "Profit/Loss/Report",
+      label: "Profit/Loss/Report",
     },
     
     
     {
-      value: "Industrial Visits / Tours / Field Trip",
-      label: "Industrial Visits / Tours / Field Trip",
+      value: "Lead Conversions",
+      label: "Lead Conversions",
     },
     
   ];
 
   const optionComponents = {
    
-    Grants: Grants,
-    "Consultancy Report": ConsultancyReport,
+    MonthlySales: MonthlySales,
+    "Stock Report": StockReport,
    
-    "STTP/FDP/Workshop/Conference Attended": Attended,
+    "Profit/Loss/Report": ProfitLoss,
    
-    "Industrial Visits / Tours / Field Trip": IndustrialVisits,
+    "Lead Conversions": LeadConversions,
    
   };
 
@@ -76,7 +76,7 @@ export default function General() {
           {React.createElement(optionComponents[selectedOption])}
         </div>
       ) : (
-        <Grants />
+        <MonthlySales />
       )}
     </div>
   );

@@ -1,6 +1,6 @@
-export { default as Attended} from "./Attended"
+export { default as ProfitLoss} from "./ProfitLoss"
 
-export { default as ConsultancyReport } from "./ConsultancyReport"
+export { default as StockReport } from "./StockReport"
 
-export { default as Grants } from './Grants'
-export { default as IndustrialVisits } from "./IndustrialVisits"
+export { default as MonthlySales } from './MonthlySales'
+export { default as LeadConversions } from "./LeadConversions"

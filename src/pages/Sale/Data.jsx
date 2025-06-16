@@ -14,30 +14,30 @@ export default function Data() {
   console.log('selected in data: ',selectedOption);
   const options = [
     
-    { value: "Grants", label: "Grants" },
-    { value: "Consultancy Report", label: "Consultancy Report" },
+    { value: "MonthlySales", label: "MonthlySales" },
+    { value: "Stock Report", label: "Stock Report" },
     
     {
-      value: "STTP/FDP/Workshop/Conference Attended",
-      label: "STTP/FDP/Workshop/Conference Attended",
+      value: "Profit/Loss/Report",
+      label: "Profit/Loss/Report",
     },
     
     
     {
-      value: "Industrial Visits / Tours / Field Trip",
-      label: "Industrial Visits / Tours / Field Trip",
+      value: "Lead Conversions",
+      label: "Lead Conversions",
     },
     
   ];
 
   const optionComponents = {
   
-    Grants: TableData,
-    "Consultancy Report": TableData,
+    MonthlySales: TableData,
+    "Stock Report": TableData,
     
-    "STTP/FDP/Workshop/Conference Attended": TableData,
+    "Profit/Loss/Report": TableData,
    
-    "Industrial Visits / Tours / Field Trip": TableData,
+    "Lead Conversions": TableData,
    
   };
 

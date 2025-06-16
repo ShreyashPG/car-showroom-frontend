@@ -22,13 +22,13 @@
 // import axios from "axios";
 // import {
 
-//   getAllRecordsAttended,
+//   getAllRecordsProfitLoss,
 
-//   getAllRecordsConsultancy,
+//   getAllRecordsStock,
 
 
-//   getAllRecordsGrants,
-//   getAllRecordsIndustrial,
+//   getAllRecordsMonthlySales,
+//   getAllRecordsLeadConversions,
 
 // } from "../../components/SModule/API_Routes";
 // import {
@@ -54,20 +54,20 @@
   
    
    
-//     "industrial_fields_tour": "visit-tours",
+//     "lead_conversions": "lead-conversions",
  
 //     "employee_internship_details": "internship-details",
    
    
 //     "employee_certificate_course": "certificate-courses",
-//     "grants": "grants",
+//     "monthlySales": "monthlySales",
    
-//     "consultancy_report": "cons-rep",
+//     "stock_report": "stock-report",
 //     "employee_event_participated": "event-participation",
    
 //     "employee_event_organized": "event-org",
    
-//     "sttp_fdp_conference_attended": "sf-ws",
+//     "profit_loss_report": "profit-loss",
  
 //   };
 
@@ -75,13 +75,13 @@
 //     const tableRoute = {
       
       
-//       "grants": getAllRecordsGrants,
-//       "consultancy_report": getAllRecordsConsultancy,
+//       "monthlySales": getAllRecordsMonthlySales,
+//       "stock_report": getAllRecordsStock,
       
-//       "sttp_fdp_conference_attended": getAllRecordsAttended,
+//       "profit_loss_report": getAllRecordsProfitLoss,
      
     
-//       "industrial_fields_tour": getAllRecordsIndustrial,
+//       "lead_conversions": getAllRecordsLeadConversions,
     
 //       "employee_internship_details": getAllRecordsInternship,
       
@@ -156,12 +156,12 @@
 //   const alternativeTableNames = {
  
   
-//     "consultancy_report": "Consultancy Report",
+//     "stock_report": "Stock Report",
    
-//     "grants": "Grants",
-//     "industrial_fields_tour": "Industrial Fields Tour",
+//     "monthlySales": "MonthlySales",
+//     "lead_conversions": "Lead Conversions",
    
-//     "sttp_fdp_conference_attended": "STTP/FDP/Conference Attended",
+//     "profit_loss_report": "Profit/Loss/Reportd",
 
 //     "employee_certificate_course": "Employee Certificate Course",
     
@@ -852,16 +852,16 @@ import "jspdf-autotable";
 import axios from "axios";
 import {
   // getAllRecordsAchievements,
-  getAllRecordsAttended,
+  getAllRecordsProfitLoss,
   // getAllRecordsBook,
   // getAllRecordsCertificate,
   // getAllRecordsConference,
-  getAllRecordsConsultancy,
+  getAllRecordsStock,
   // getAllRecordsContribution,
   // getAllRecordsExtension,
   // getAllRecordsFaculty,
-  getAllRecordsGrants,
-  getAllRecordsIndustrial,
+  getAllRecordsMonthlySales,
+  getAllRecordsLeadConversions,
   // getAllRecordsMous,
   // getAllRecordsPatent,
   // getAllRecordsProfessional,
@@ -899,7 +899,7 @@ const Report = () => {
     "extension_activity": "extension-act",
     "technical_competition_fest": "techfest-org",
     "faculty_achievements": "faculty-achievement",
-    "industrial_fields_tour": "visit-tours",
+    "lead_conversions": "lead-conversions",
     "contribution_to_bos": "contribution-bos",
     "employee_internship_details": "internship-details",
     "research_publication": "research-pb",
@@ -908,15 +908,15 @@ const Report = () => {
     "employee_conference_publication": "conference-pb",
     "faculty_conference_publication": "faculty-pb",
     "employee_certificate_course": "certificate-courses",
-    "grants": "grants",
+    "monthlySales": "monthlySales",
     "employee_sports_data": "sports-data",
-    "consultancy_report": "cons-rep",
+    "stock_report": "stock-report",
     "employee_event_participated": "event-participation",
     "patent_publication": "patent-pb",
     "employee_event_organized": "event-org",
     "conference_seminar_workshops": "con-sem",
     "employee_technical_events": "tech-events",
-    "sttp_fdp_conference_attended": "sf-ws",
+    "profit_loss_report": "profit-loss",
     "employee_higher_education": "higher-edu",
     "webinar_guest_lectures": "web-guest",
   };
@@ -926,11 +926,11 @@ const Report = () => {
       "research_publication": getAllRecordsResearch,
       "book_publication": getAllRecordsBook,
       "faculty_conference_publication": getAllRecordsFaculty,
-      "grants": getAllRecordsGrants,
-      "consultancy_report": getAllRecordsConsultancy,
+      "monthlySales": getAllRecordsMonthlySales,
+      "stock_report": getAllRecordsStock,
       "patent_publication": getAllRecordsPatent,
       "conference_seminar_workshops": getAllRecordsConference,
-      "sttp_fdp_conference_attended": getAllRecordsAttended,
+      "profit_loss_report": getAllRecordsProfitLoss,
       "webinar_guest_lectures": getAllRecordsWebinar,
       "mous": getAllRecordsMous,
       "certificate_courses": getAllRecordsCertificate,
@@ -939,7 +939,7 @@ const Report = () => {
       "extension_activity": getAllRecordsExtension,
       "technical_competition_fest": getAllRecordsTechnical,
       "faculty_achievements": getAllRecordsAchievements,
-      "industrial_fields_tour": getAllRecordsIndustrial,
+      "lead_conversions": getAllRecordsLeadConversions,
       "contribution_to_bos": getAllRecordsContribution,
       "employee_internship_details": getAllRecordsInternship,
       "employee_research_publication": getAllRecordsResearchStud,
@@ -1019,13 +1019,13 @@ const Report = () => {
     "book_publication": "Book Publication",
     "certificate_courses": "Certificate Courses",
     "conference_seminar_workshops": "Conference Seminar Workshop",
-    "consultancy_report": "Consultancy Report",
+    "stock_report": "Stock Report",
     "contribution_to_bos": "Contribution to BOS",
     "extension_activity": "Extension Activity",
     "faculty_achievements": "Faculty Achievements",
     "faculty_conference_publication": "Faculty Conference Publication",
-    "grants": "Grants",
-    "industrial_fields_tour": "Industrial Fields Tour",
+    "monthlySales": "MonthlySales",
+    "lead_conversions": "Lead Conversions",
     // "metadata_sale": "metadata_sale",
     "mous": "MOUs",
     // "notices": "Notices",
@@ -1034,7 +1034,7 @@ const Report = () => {
     // "register": "register",
     "research_publication": "Research Publication",
     "resource_person": "Resource Person",
-    "sttp_fdp_conference_attended": "STTP/FDP/Conference Attended",
+    "profit_loss_report": "Profit/Loss/Reportd",
     "employee_certificate_course": "Employee Certificate Course",
     "employee_conference_publication": "Employee Conference Publication",
     "employee_event_organized": "Employee Event Organized",

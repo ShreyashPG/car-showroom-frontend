@@ -21,12 +21,12 @@ import "jspdf-autotable";
 import axios from "axios";
 import {
 
-  getAllRecordsAttended,
+  getAllRecordsProfitLoss,
 
-  getAllRecordsConsultancy,
+  getAllRecordsStock,
  
-  getAllRecordsGrants,
-  getAllRecordsIndustrial,
+  getAllRecordsMonthlySales,
+  getAllRecordsLeadConversions,
   
 } from "../../components/SModule/API_Routes";
 import { DocumentIcon } from "@heroicons/react/24/solid";
@@ -54,31 +54,31 @@ const Report = () => {
 
   const tableMapping = {
    
-    "industrial_fields_tour": "visit-tours",
+    "lead_conversions": "lead-conversions",
    
     "employee_internship_details": "internship-details",
    
     "employee_certificate_course": "certificate-courses",
-    "grants": "grants",
+    "monthlySales": "monthlySales",
     
-    "consultancy_report": "cons-rep",
+    "stock_report": "stock-report",
     "employee_event_participated": "event-participation",
     
     "employee_event_organized": "event-org",
     
-    "sttp_fdp_conference_attended": "sf-ws",
+    "profit_loss_report": "profit-loss",
    
   };
 
   const tableRoutesMapping = (table) => {
     const tableRoute = {
       
-      "grants": getAllRecordsGrants,
-      "consultancy_report": getAllRecordsConsultancy,
+      "monthlySales": getAllRecordsMonthlySales,
+      "stock_report": getAllRecordsStock,
       
-      "sttp_fdp_conference_attended": getAllRecordsAttended,
+      "profit_loss_report": getAllRecordsProfitLoss,
      
-      "industrial_fields_tour": getAllRecordsIndustrial,
+      "lead_conversions": getAllRecordsLeadConversions,
     
       "employee_internship_details": getAllRecordsInternship,
      
@@ -157,13 +157,13 @@ const Report = () => {
   //   "book_publication": "Book Publication",
   //   "certificate_courses": "Certificate Courses",
   //   "conference_seminar_workshops": "Conference Seminar Workshop",
-  //   "consultancy_report": "Consultancy Report",
+  //   "stock_report": "Stock Report",
   //   "contribution_to_bos": "Contribution to BOS",
   //   "extension_activity": "Extension Activity",
   //   "faculty_achievements": "Faculty Achievements",
   //   "faculty_conference_publication": "Faculty Conference Publication",
-  //   "grants": "Grants",
-  //   "industrial_fields_tour": "Industrial Fields Tour",
+  //   "monthlySales": "MonthlySales",
+  //   "lead_conversions": "Lead Conversions",
   //   // "metadata_sale": "metadata_sale",
   //   "mous": "MOUs",
   //   // "notices": "Notices",
@@ -172,7 +172,7 @@ const Report = () => {
   //   // "register": "register",
   //   "research_publication": "Research Publication",
   //   "resource_person": "Resource Person",
-  //   "sttp_fdp_conference_attended": "STTP/FDP/Conference Attended",
+  //   "profit_loss_report": "Profit/Loss/Reportd",
   //   "student_certificate_course": "Student Certificate Course",
   //   "student_conference_publication": "Student Conference Publication",
   //   "student_event_organized": "Student Event Organized",

@@ -30,12 +30,12 @@ export const ADashBoard = () => {
 
   const saleMapping = {
 
-    grants: "Grants",
-    consultancy_report: "Consultancy Reports",
+    monthlySales: "MonthlySales",
+    stock_report: "Stock Reports",
    
-    sttp_fdp_conference_attended: "STTP/FDP Conference Attended",
+    profit_loss_report: "Profit/Loss Report",
    
-    industrial_fields_tour: "Industrial Fields Tours",
+    lead_conversions: "Lead Conversions",
   
   };
 

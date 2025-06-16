@@ -2,44 +2,44 @@ import { BASE_URL } from "../../api";
 
 
 
-// Grants Routes
-export const getAllRecordsGrants = `${BASE_URL}/sale/grants/all`;
-export const getOneRecordsGrants = (username) => {
-  return `${BASE_URL}/sale/grants/${username}`;
+// MonthlySales Routes
+export const getAllRecordsMonthlySales = `${BASE_URL}/sale/monthlySales/all`;
+export const getOneRecordsMonthlySales = (username) => {
+  return `${BASE_URL}/sale/monthlySales/${username}`;
 };
-export const addRecordsGrants = `${BASE_URL}/sale/grants/create-new`;
-export const deleteRecordsGrants = `${BASE_URL}/sale/grants/remove`;
-export const updateRecordsGrants = `${BASE_URL}/sale/grants/update`;
-export const uploadRecordsGrants = `${BASE_URL}/sale/grants/upload-file`;
+export const addRecordsMonthlySales = `${BASE_URL}/sale/monthlySales/create-new`;
+export const deleteRecordsMonthlySales = `${BASE_URL}/sale/monthlySales/remove`;
+export const updateRecordsMonthlySales = `${BASE_URL}/sale/monthlySales/update`;
+export const uploadRecordsMonthlySales = `${BASE_URL}/sale/monthlySales/upload-file`;
 
-//Consultancy Report
-export const getAllRecordsConsultancy = `${BASE_URL}/sale/cons-rep/all`;
-export const getOneRecordsConsultancy = (username) => {
-  return `${BASE_URL}/sale/cons-rep/${username}`;
+//Stock Report
+export const getAllRecordsStock = `${BASE_URL}/sale/stock-report/all`;
+export const getOneRecordsStock = (username) => {
+  return `${BASE_URL}/sale/stock-report/${username}`;
 };
-export const addRecordsConsultancy = `${BASE_URL}/sale/cons-rep/create-new`;
-export const deleteRecordsConsultancy = `${BASE_URL}/sale/cons-rep/remove`;
-export const updateRecordsConsultancy = `${BASE_URL}/sale/cons-rep/update`;
-export const uploadRecordsConsultancy = `${BASE_URL}/sale/cons-rep/upload-file`;
+export const addRecordsStock = `${BASE_URL}/sale/stock-report/create-new`;
+export const deleteRecordsStock = `${BASE_URL}/sale/stock-report/remove`;
+export const updateRecordsStock = `${BASE_URL}/sale/stock-report/update`;
+export const uploadRecordsStock = `${BASE_URL}/sale/stock-report/upload-file`;
 
-// SSTP_FDP_Workshop Attended Routes
-export const getAllRecordsAttended = `${BASE_URL}/sale/sf-ws/all`;
-export const getOneRecordsAttended = (username) => {
-  return `${BASE_URL}/sale/sf-ws/${username}`;
+// Profit_Loss_Report ProfitLoss Routes
+export const getAllRecordsProfitLoss = `${BASE_URL}/sale/profit-loss/all`;
+export const getOneRecordsProfitLoss = (username) => {
+  return `${BASE_URL}/sale/profit-loss/${username}`;
 };
-export const addRecordsAttended = `${BASE_URL}/sale/sf-ws/create-new`;
-export const deleteRecordsAttended = `${BASE_URL}/sale/sf-ws/remove`;
-export const updateRecordsAttended = `${BASE_URL}/sale/sf-ws/update`;
-export const uploadRecordsAttended = `${BASE_URL}/sale/sf-ws/upload-file`;
+export const addRecordsProfitLoss = `${BASE_URL}/sale/profit-loss/create-new`;
+export const deleteRecordsProfitLoss = `${BASE_URL}/sale/profit-loss/remove`;
+export const updateRecordsProfitLoss = `${BASE_URL}/sale/profit-loss/update`;
+export const uploadRecordsProfitLoss = `${BASE_URL}/sale/profit-loss/upload-file`;
 
 
-// Industrial_Visits Routes
-export const getAllRecordsIndustrial = `${BASE_URL}/sale/visit-tours/all`;
-export const getOneRecordsIndustrial = (username) => {
-  return `${BASE_URL}/sale/visit-tours/${username}`;
+// Lead_Conversions Routes
+export const getAllRecordsLeadConversions = `${BASE_URL}/sale/lead-conversions/all`;
+export const getOneRecordsLeadConversions = (username) => {
+  return `${BASE_URL}/sale/lead-conversions/${username}`;
 };
-export const addRecordsIndustrial = `${BASE_URL}/sale/visit-tours/create-new`;
-export const deleteRecordsIndustrial = `${BASE_URL}/sale/visit-tours/remove`;
-export const updateRecordsIndustrial = `${BASE_URL}/sale/visit-tours/update`;
-export const uploadRecordsIndustrial = `${BASE_URL}/sale/visit-tours/upload-file`;
+export const addRecordsLeadConversions = `${BASE_URL}/sale/lead-conversions/create-new`;
+export const deleteRecordsLeadConversions = `${BASE_URL}/sale/lead-conversions/remove`;
+export const updateRecordsLeadConversions = `${BASE_URL}/sale/lead-conversions/update`;
+export const uploadRecordsLeadConversions = `${BASE_URL}/sale/lead-conversions/upload-file`;
 

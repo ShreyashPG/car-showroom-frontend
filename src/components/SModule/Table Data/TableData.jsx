@@ -31,28 +31,28 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import {
 
-  getOneRecordsAttended,
+  getOneRecordsProfitLoss,
 
-  getOneRecordsConsultancy,
+  getOneRecordsStock,
 
-  getOneRecordsGrants,
-  getOneRecordsIndustrial,
+  getOneRecordsMonthlySales,
+  getOneRecordsLeadConversions,
 
 
-  deleteRecordsConsultancy,
+  deleteRecordsStock,
 
-  deleteRecordsAttended,
+  deleteRecordsProfitLoss,
 
-  deleteRecordsIndustrial,
+  deleteRecordsLeadConversions,
 
-  deleteRecordsGrants,
+  deleteRecordsMonthlySales,
 
-  updateRecordsGrants,
-  updateRecordsConsultancy,
+  updateRecordsMonthlySales,
+  updateRecordsStock,
 
-  updateRecordsAttended,
+  updateRecordsProfitLoss,
 
-  updateRecordsIndustrial,
+  updateRecordsLeadConversions,
 
 } from "../API_Routes";
 import { useNavigate } from "react-router-dom";
@@ -72,14 +72,14 @@ export default function TableData({ tableName }) {
     // Define your API routes based on the table names
     const apiRoutes = {
     
-      Grants: (username) => getOneRecordsGrants(username),
-      "Consultancy Report": (username) => getOneRecordsConsultancy(username),
+      MonthlySales: (username) => getOneRecordsMonthlySales(username),
+      "Stock Report": (username) => getOneRecordsStock(username),
   
-      "STTP/FDP/Workshop/Conference Attended": (username) =>
-        getOneRecordsAttended(username),
+      "Profit/Loss/Report": (username) =>
+        getOneRecordsProfitLoss(username),
     
-      "Industrial Visits / Tours / Field Trip": (username) =>
-        getOneRecordsIndustrial(username),
+      "Lead Conversions": (username) =>
+        getOneRecordsLeadConversions(username),
      
     };
 
@@ -93,17 +93,17 @@ export default function TableData({ tableName }) {
   const deleteAPIRoute = (tableName) => {
     const deleteRoutes = {
       
-      Grants: (username, S_ID) =>
-        `${deleteRecordsGrants}?username=${username}&S_ID=${S_ID}`,
+      MonthlySales: (username, S_ID) =>
+        `${deleteRecordsMonthlySales}?username=${username}&S_ID=${S_ID}`,
 
-      "Consultancy Report": (username, S_ID) =>
-        `${deleteRecordsConsultancy}?username=${username}&S_ID=${S_ID}`,
+      "Stock Report": (username, S_ID) =>
+        `${deleteRecordsStock}?username=${username}&S_ID=${S_ID}`,
    
-      "STTP/FDP/Workshop/Conference Attended": (username, S_ID) =>
-        `${deleteRecordsAttended}?username=${username}&S_ID=${S_ID}`,
+      "Profit/Loss/Report": (username, S_ID) =>
+        `${deleteRecordsProfitLoss}?username=${username}&S_ID=${S_ID}`,
 
-      "Industrial Visits / Tours / Field Trip": (username, S_ID) =>
-        `${deleteRecordsIndustrial}?username=${username}&S_ID=${S_ID}`,
+      "Lead Conversions": (username, S_ID) =>
+        `${deleteRecordsLeadConversions}?username=${username}&S_ID=${S_ID}`,
  
     };
 
@@ -114,16 +114,16 @@ export default function TableData({ tableName }) {
   const updateAPIRoute = (tableName) => {
     const updateRoutes = {
 
-      Grants: (username, S_ID) =>
-        `${updateRecordsGrants}?username=${username}&S_ID=${S_ID}`,
-      "Consultancy Report": (username, S_ID) =>
-        `${updateRecordsConsultancy}?username=${username}&S_ID=${S_ID}`,
+      MonthlySales: (username, S_ID) =>
+        `${updateRecordsMonthlySales}?username=${username}&S_ID=${S_ID}`,
+      "Stock Report": (username, S_ID) =>
+        `${updateRecordsStock}?username=${username}&S_ID=${S_ID}`,
 
-      "STTP/FDP/Workshop/Conference Attended": (username, S_ID) =>
-        `${updateRecordsAttended}?username=${username}&S_ID=${S_ID}`,
+      "Profit/Loss/Report": (username, S_ID) =>
+        `${updateRecordsProfitLoss}?username=${username}&S_ID=${S_ID}`,
     
-      "Industrial Visits / Tours / Field Trip": (username, S_ID) =>
-        `${updateRecordsIndustrial}?username=${username}&S_ID=${S_ID}`,
+      "Lead Conversions": (username, S_ID) =>
+        `${updateRecordsLeadConversions}?username=${username}&S_ID=${S_ID}`,
      
     };
 

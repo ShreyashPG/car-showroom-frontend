@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { addRecordsIndustrial, uploadRecordsIndustrial } from "./API_Routes";
+import { addRecordsLeadConversions, uploadRecordsLeadConversions } from "./API_Routes";
 
-export default function IndustrialVisit() {
+export default function LeadConversionsVisit() {
   const { currentUser } = useSelector((state) => state.user);
   const [isFinancialSupport, setIsFinancialSupport] = useState(false);
   const [uploadedFilePaths, setUploadedFilePaths] = useState({});
@@ -52,7 +52,7 @@ export default function IndustrialVisit() {
       const queryParams = new URLSearchParams();
       queryParams.append("username", currentUser?.Username);
       queryParams.append("role", currentUser?.Role);
-      queryParams.append("tableName", "industrial_fields_tour");
+      queryParams.append("tableName", "lead_conversions");
 
       let formDataForUpload = new FormData();
       const columnNames = [];
@@ -73,7 +73,7 @@ export default function IndustrialVisit() {
       // Append column names to the query parameters
       queryParams.append("columnNames", columnNames.join(","));
       console.log('query: ', queryParams);
-      const url = `${uploadRecordsIndustrial}?${queryParams.toString()}`;
+      const url = `${uploadRecordsLeadConversions}?${queryParams.toString()}`;
       console.log("formdata", formDataForUpload)
       const response = await axios.post(url, formDataForUpload, {
         headers: {
@@ -156,7 +156,7 @@ export default function IndustrialVisit() {
       console.log("Final data:", formDataWithFilePath);
 
       // Send a POST request to the addRecordsBook API endpoint
-      await axios.post(addRecordsIndustrial, formDataWithFilePath);
+      await axios.post(addRecordsLeadConversions, formDataWithFilePath);
 
       // Display a success toast
       toast.success("Record Added Successfully", {
@@ -200,7 +200,7 @@ export default function IndustrialVisit() {
           color="blue-gray"
           className="mx-auto underline underline-offset-2"
         >
-          Industrial Visits / Tours / Field Trip
+          Lead Conversions
         </Typography>
 
         <form className="mt-8 mb-2" onSubmit={handleSubmit}>
